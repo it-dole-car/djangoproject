@@ -1,0 +1,179 @@
+
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<main class="container mt-2">
+ 
+    <div class="card-header">
+      <h1 ">ADD ESTABLISHMENT</h1>
+    </div>
+
+      <div class="card">
+      <div class="container">
+          {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+
+          <div class="card">
+          <div class="card-header">
+            <h1 class="card-title mb-0 ">ESTABLISHMENT INFORMATION</h1>
+          </div>   
+          
+        <form method="POST" action="" id="#CreateEmployer" data-municipalities-url="{% url 'ajax_load_municipalities' %}" novalidate>
+          
+          {% csrf_token %}
+            <div class="form-control">
+              <div class="row "> 
+              <div class="col-5" >{{form.business_name|as_crispy_field}}</div>  
+              <div class="col-5">{{form.registered_name|as_crispy_field}}</div>              
+              <div class="col-2">{{form.tin|as_crispy_field}}</div>
+              </div>
+            </div>              
+           
+            <br class="form mb-3 mt-3">
+            <div class="form-control">
+              <div class="card-header">
+                <h6 class="card-title mb-0 ">Contact Information</h6>
+              </div>  
+              <div class="row">
+              <div class="col-3" disabled>{{form.zip_code|as_crispy_field}}</div>  
+              <div class="col-9">{{form.building|as_crispy_field}}</div>
+              </div>
+              <div class="row">
+              <div class="col-4">{{form.province|as_crispy_field}}</div>
+              <div class="col-4">{{form.municipality|as_crispy_field}}</div>
+              <div class="col-4" onchange="zip()">{{form.barangay|as_crispy_field}}</div>
+              </div>  
+              <div class="row">
+              <div class="col-2">{{form.telephone|as_crispy_field}}</div>
+              <div class="col-2">{{form.fax_number|as_crispy_field}}</div>
+              <div class="col-4">{{form.email|as_crispy_field}}</div>
+              <div class="col-4">{{form.manager|as_crispy_field}}</div>            
+              </div>
+            </div>
+            <br class="form mb-3 mt-3">
+            <div class="form-control">
+            <div class="card-header">
+              <h6 class="card-title mb-0 ">Business Information</h6>
+            </div>  
+            <div class="row "> 
+            <div class="col-6" >{{form.main_economic_activity|as_crispy_field}}</div>  
+            <div class="col-6">{{form.major_products|as_crispy_field}}</div>
+            <div class="col-6">{{form.legal_organization|as_crispy_field}}</div>
+            <div class="col-6">{{form.economic_organization|as_crispy_field}}</div>
+            </div>
+            <div class="form-control">
+            <div class="row ">               
+            <div class="col-2" >{{form.total_employment|as_crispy_field}}</div>
+            <div class="col-1"  onchange="sum()">{{form.male|as_crispy_field}}</div>
+            <div class="col-1"  onchange="sum()">{{form.female|as_crispy_field}}</div>
+            <div class="col-1">{{form.alien|as_crispy_field}}</div>
+            
+            <div class="col-2">{{form.regular|as_crispy_field}}</div>
+            <div class="col-2">{{form.non_regular|as_crispy_field}}</div>
+            <div class="col-1">{{form.below_15|as_crispy_field}}</div>
+            <div class="col-1">{{form.above_15|as_crispy_field}}</div>
+            </div>
+            </div>
+            <br class="form mb-3 mt-3"> 
+            <div class="form-control">
+            <div class="row "> 
+            <div class="col-12">{{form.labor_union|as_crispy_field}}</div>   
+            <div class="col-6">{{form.total_number_of_subcontactors|as_crispy_field}}</div>   
+            <div class="col-6">{{form.total_number_of_subcontracted_employees|as_crispy_field}}</div>   
+            </div>
+            </div>
+            <br class="form mb-3 mt-3"> 
+          <div class="form-control">
+            <div class="card-header">
+              <h6 class="card-title mb-0 ">Certification</h6>
+            </div>  
+            <div class="row ">  
+            <div class="col-6">{{form.representative_name|as_crispy_field}}</div>
+            <div class="col-6">{{form.position|as_crispy_field}}</div>
+            <div class="col-4">{{form.telephone_number|as_crispy_field}}</div>
+            <div class="col-4">{{form.fax_number|as_crispy_field}}</div>   
+            <div class="col-4">{{form.email_add|as_crispy_field}}</div>   
+          </div>
+        </div>
+       
+        </form>   
+        <br class="form mb-3 mt-3"> 
+        <button type="submit" class="btn btn-primary">
+          Add Employer
+        </button>
+        
+        <a a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary">Go Back</a>
+       
+
+      
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  $('#id_zip_code').attr('readonly', true);
+  $('#id_total_employment').attr('readonly', true);
+  $("#id_province").change(function () {
+    var url = $("#CreateEmployer").attr("data-municipalities-url");  // get the url of the `load_cities` view
+    var provinceId = $(this).val();  // get the selected country ID from the HTML input
+
+    $.ajax({                       // initialize an AJAX request
+      url: '{% url "ajax_load_municipalities"%}',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+      data: {
+        'province': provinceId       // add the country id to the GET parameters
+      },
+      success: function (data) {   // `data` is the return of the `load_cities` view function
+        $("#id_municipality").html(data);  // replace the contents of the city input with the data that came from the server
+      }
+    });
+
+  });
+  // this one is for fetching vanue data
+  $("#id_municipality").change(function () { //django-model-form created this id
+    var url = $("#CreateEmployer").attr("data-municipalities-url");  // get the url of the `load_cities` view
+    var municipalityId = $(this).val();  // get the selected country ID from the HTML input
+
+    $.ajax({                       // initialize an AJAX request
+      url: '{% url "ajax_load_barangay" %}',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/) person_form.html template has this url var
+      data: {
+        'municipality': municipalityId       // add the country id to the GET parameters
+      },
+      success: function (data) {   // `data` is the return of the `load_cities` view function
+        $("#id_barangay").html(data);  // replace the contents of the city input with the data that came from the server
+      }
+    });
+  });
+
+function sum() 
+{ 
+    var txt1 = parseInt(document.getElementById('id_male').value); 
+    var txt2 = parseInt(document.getElementById('id_female').value); 
+    var tot = txt1 + txt2 ;
+      document.getElementById('id_total_employment').value = tot;  
+    
+} 
+
+function zip() 
+{ 
+     document.getElementById('id_zip_code').value = parseInt(document.getElementById('id_barangay').value);
+
+} 
+
+
+
+
+</script>
+
+
+
+</main>
+{% endblock content %}
+          

@@ -1,0 +1,305 @@
+{% extends 'main.html' %}
+
+<body>
+   
+{% block content %}
+
+
+
+<main class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-sm-2"> 
+            {% include 'rule1020/leftside.html' %}
+        </div>      
+
+
+    <body>
+        <main class="content">
+            <div class="container-fluid p-0">
+
+                <h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+                
+                
+                <div class="row">
+                    <div class="col-xl-6 col-xxl-5 d-flex">
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="card-body">   
+                                                    <i class="fa-solid fa-5x fa-building-circle-check"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                  <div class="card-body">
+                                                    <h4 class="card-title text-end">Number of Registered Establishments</h4>
+                                                    <h1 class="mt-1 mb-3 text-end">{{total_num_estabs}}</h1>
+                                                 </div>
+                                                </div>
+                                            </div>    
+                                        
+                                    </div>
+                                    <div class="card">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="card-body">   
+                                                    <br>
+                                                    <i class="fa-solid fa-5x fa-people-group"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                              <div class="card-body">
+                                                <h4 class="card-title text-end">Number of Workers</h4>
+                                                <h1 class="mt-1 mb-3 text-end">{{total_num_workers}}</h1>
+                                             </div>
+                                            </div>
+                                        </div>    
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="card-body">   
+                                                
+                                                    <i class="fa-solid fa-5x fa-building-circle-arrow-right"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                  <div class="card-body">
+                                                    <h4 class="card-title text-end">Establishments with Subcontractors</h4>
+                                                    <h1 class="mt-1 mb-3 text-end">{{subcontractors}}</h1>
+                                                 </div>
+                                                </div>
+                                            </div>    
+                                        
+                                    </div>
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <br>
+                                        <h4 class="card-title text-center">Gender Distribution</h4>
+                                        <div class="row">
+                                            
+                                            <div class="col-sm-6">
+                                                <div class="card-body">   
+                                                    <h4 class="card-title text-center">Male</h4>
+                                                    <h2 class="mt-1 mb-1 text-center">{{male}}</h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="card-body">   
+                                                    <h4 class="card-title text-center">Female</h4>
+                                                    <h2 class="mt-1 mb-1 text-center">{{female}}</h2>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-xxl-5 d-flex">
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="card-body">   
+                                                        <i class="fa-solid fa-5x fa-building-user"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                  <div class="card-body">
+                                                    <h4 class="card-title text-end">Total Subcontracted Employees</h4>
+                                                    <h1 class="mt-1 mb-3 text-end">{{total_subcontractors}}</h1>
+                                                 </div>
+                                                </div>
+                                            </div>    
+                                        
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="card">
+                                            <br>
+                                            <h4 class="card-title text-center">Employment Status</h4>
+                                            <div class="row">
+                                                
+                                                <div class="col-sm-6">
+                                                    <div class="card-body">   
+                                                        <h4 class="card-title text-center">Regular</h4>
+                                                        <h2 class="mt-1 mb-1 text-center">{{regular}}</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="card-body">   
+                                                        <h4 class="card-title text-center">Non-regular</h4>
+                                                        <h2 class="mt-1 mb-1 text-center">{{non_regular}}</h2>
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="card-body">   
+                                                    <br>
+                                                    <i class="fa-solid fa-4x fa-user-group"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                              <div class="card-body">
+                                                <h4 class="card-title text-end">Total Number of Labor Union Registered</h4>
+                                                <h1 class="mt-1 mb-3 text-end">{{labor_union}}</h1>
+                                             </div>
+                                            </div>
+                                        </div>    
+                                    
+                                     </div>
+                                    <div class="card">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="card-body">   
+                                                    <br>
+                                                    <i class="fa-solid fa-5x fa-earth-americas"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                              <div class="card-body">
+                                                <h4 class="card-title text-end">Number of Alien Workers</h4>
+                                                <h1 class="mt-1 mb-3 text-end">{{alien}}</h1>
+                                             </div>
+                                            </div>
+                                        </div>    
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    
+
+                   
+                </div>
+
+                <div class="row">
+                    
+                    <div class="col-12 col-md-12 col-xl-4 d-flex">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <h5 class="card-title mb-0">No of Registered Establishments per Province</h5>
+                                <canvas id="myChart" width="400" height="450"></canvas>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-xl-7 d-flex  ">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <h5 class="card-title mb-0">No of Registered Establishments per Industry</h5>
+                                <canvas id="myChart2" width="675" height="450"></canvas>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            
+        </main>
+        <script>
+            const ctx2 = document.getElementById('myChart2').getContext('2d');
+   const myChart2 = new Chart(ctx2, {
+       type: 'bar',
+       data: {
+           labels: [{% for x in qs %} '{{ x.main_economic_activity |truncatechars:25 }}', {% endfor %}],
+           datasets: [{
+               label: ' ',
+               data: [{% for x in qs %} '{{ x.count }}', {% endfor %}],
+               backgroundColor: [
+                   'rgba(24, 24, 24, .8)',
+                   'rgba(24, 24, 24, .8)',
+                   'rgba(24, 24, 24, .8)',
+                   'rgba(24, 24, 24, .8)',
+                   'rgba(24, 24, 24, .8)',
+                   'rgba(24, 24, 24, .8)',
+                   'rgba(24, 24, 24, .8)',
+                   'rgba(24, 24, 24, .8)',
+                   'rgba(24, 24, 24, .8)',
+               ],
+               borderColor: [
+               'rgba(0, 0, 0, 0.2)',
+               ],
+               borderWidth: 1
+           }]
+       },
+       options: {
+        indexAxis: 'y',
+           scales: {
+               y: {
+                   beginAtZero: true
+               }
+           }
+       }
+   });
+
+</script>   
+
+<script type="text/javascript">
+const ctx = document.getElementById('myChart').getContext('2d');
+   const myChart = new Chart(ctx, {
+       type: 'doughnut',
+       data: {
+           labels: ['AFO', 'ASO', 'BBFO', 'IFO', 'KFO', 'MPFO'],
+           datasets: [{
+               label: ' ',
+               data: [{% for number in province_list %} '{{ number }}', {% endfor %}],
+               backgroundColor: [
+                   'rgba(7, 7, 7, 0.8)',
+                   'rgba(41, 41, 41, 0.8)',
+                   'rgba(73, 72, 70, 0.8)',
+                   'rgba(107, 106, 104, 0.8)',
+                   'rgba(139, 138, 136, 0.8)',
+                   'rgba(173, 172, 170, 0.8)',
+               ],
+               borderColor: [
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+               ],
+               borderWidth: 1
+           }]
+       },
+       options: {
+        
+           scales: {
+               y: {
+                   beginAtZero: true
+               }
+           }
+       }
+   });
+
+
+        </script>
+    </body>    
+    </div>
+{% endblock content%}
+</main>

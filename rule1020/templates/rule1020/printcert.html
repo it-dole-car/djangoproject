@@ -1,0 +1,97 @@
+<div  hx-target="this" hx-swap = "outerHTML">
+{% extends 'main.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<main class="container-fluid mt-2">
+  <div class="row">
+    
+      <div class="col-sm-2"> 
+          {% include 'rule1020/leftside.html' %}
+      </div>
+    <div class="col-sm-9">        
+      <div class="card">
+          <div class="card-header">
+              <h1 ">PRINT CERTIFICATE</h1>
+          </div>
+        <div class="container">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+          </div>
+         
+        <div class="form-control">
+          <div class="card-header">
+            <h1 class="card-title mb-0 ">ESTABLISHMENT INFORMATION</h1>
+          </div>   
+              <div class="row "> 
+              <div class="col-3" >Bussiness Name:<h4>{{info_print.business_name}}</h4></div>  
+              <div class="col-3" >Registered Name:<h4>{{info_print.registered_name}}</h4></div>  
+              <div class="col-3" >Tin:<h4>{{info_print.tin}}</h4></div>  
+              </div>
+              <div class="row">
+              <div class="col-3" >Building/Street/:<h4>{{info_print.building}}</h4></div>
+              <div class="col-3" >Barangay:<h4>{{info_print.barangay}}</h4></div>
+              <div class="col-3" >Municipality:<h4>{{info_print.municipality}}</h4></div>
+              <div class="col-3" >Province:<h4>{{info_print.province}}</h4></div>
+              </div>
+              <div class="row">
+                <div class="col-3" >Total Employment:<h4>{{info_print.total_employment}}</h4></div>
+                <div class="col-3" >Main Economic Activity:<h4>{{info_print.main_economic_activity}}</h4></div>
+                <div class="col-3" >Legal Organization:<h4>{{info_print.legal_organization}}</h4></div>
+                <div class="col-3" >Economic Organization:<h4>{{info_print.economic_organization}}</h4></div>
+                </div>
+            </div>    
+            
+         
+          <div class="form-control" >
+            <form  method="GET" action=" ">   
+              {% csrf_token %}
+                <div class="card-header">
+                  <h6 class="card-title mb-0 ">Certificate Details</h6>
+                </div>  
+                <div class="row">
+                  <div class="col-3" >Certificate Number<h4>CAR-{{office}}-{{datechop}}-{{info_print.id}}</h4></div>
+                
+                </div>
+                <div class="row">
+                  <div class="col-3" >Date Encoded<h4>{{info_print.date_encoded}}</h4></div>
+                  <div class="col-3" >Date Registered<h4>{{info_print.date_registered}}</h4></div>
+                  <div class="col-3" >Date Printed<h4>{{info_print.date_printed}}</h4></div>
+                  <div class="col-3" >Date Release<h4>{{info_print.date_release}}</h4></div>
+                </div>
+                  <div class="row">
+                    <div class="col-3" >OFFICE<h4>{{office}}</h4></div>
+                    <div class="col-3" >Address<h4>{{address}}</h4></div>
+                    <div class="col-3" >Head<h4>{{head}}</h4></div>
+                    <div class="col-3" >Position<h4>{{position}}</h4></div>
+                  </div>
+                </div>
+              </div>
+            </form>   
+            
+        </form>   
+        <div class = "float-end">
+      
+        <a class="btn btn-dark" 
+                            hx-get="{% url 'released' info_print.id %}"
+                            hx-confirm="Are you sure you wish to release?">
+                            <i class="fa-solid  fa-trash-can"></i>Release</a>
+        <a  class="btn btn-dark" href="{% url 'render_pdf_view' info_print.id %}"  target="_blank">{{button_print}}</a>
+        <a class="btn btn-dark" a href="{{request.META.HTTP_REFERER}}" >Go Back</a>
+        <br class="form mb-3 mt-3"> 
+        </div>
+    </div>
+    </div>
+  </div>
+
+
+ 
+</main>
+{% endblock content %}
+
+</div>

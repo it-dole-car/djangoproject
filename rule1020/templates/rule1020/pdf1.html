@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+    {% load static %}
+    {% block content %} 
+    
+    <html lang="en">
+       
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+                    
+       
+        <title>ONLINE SERVICES</title>
+        <style>
+            .this{
+                font-size: 18px;   
+                text-align: center;    
+            }
+            .certnum{
+                font-size: 18px;   
+                text-align: center;    
+            }
+            .emp-name{
+                font-size: 35px;   
+                text-align: center;   
+            }
+            .cs-color {
+            
+            color: white;
+            text-align: center;
+            font-size: 40px;
+            padding-top: 15px;
+            size: 40px;
+            font-family: Helvetica;
+            }
+            .box{
+                background-color: rgb(216, 11, 11);
+            }
+        </style>                    
+    </head>
+        <body>
+            <div>
+                <div>
+                    <img src="static/image/header.png">
+                </div>
+                        <div class="certnum">
+                            <h3>CERTIFICATE NUMBER:   {{ info_print.tin }}</h3>
+                        </div>
+                        
+                        <div class="emp-name">
+                           
+                            <h3>{{ info_print.business_name }}</h3>
+                            
+                        </div>
+                        <div class="this">
+                            <h5>
+                            {{info_print.building}} {{info_print.barangay}}, {{info_print.municipality}}, {{info_print.province}}
+                        </h5>
+                        </div >
+                        <div class="certnum">
+                            <p>
+                                for having complied with the registration requirements pursuant to Rule 1020 of the Occupational Safety and Health Standards, as amended.                                
+                            </p>
+                            <p>  
+                                Given this , {{ info_print.province }}, Philippines.
+                            </p>
+                        </div>     
+                    </div>
+                    <br>
+                    <br><br><br>
+                    <br><br><br><br><br>
+                    <br><br><br><br><br>
+                    <br><br><br><br>
+                <div>
+                    <img src="static/image/Untitled-3.png">
+                </div>
+
+            </div>                
+            
+            
+
+         
+
+        </body>
+        {% endblock %}
+</html>

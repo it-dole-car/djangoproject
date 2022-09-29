@@ -1,0 +1,10 @@
+.cert {
+    background-image: url(/static/image/Certificate.jpg);
+    background-repeat: no-repeat;
+    background-size: 1300px 1000px;
+
+}
+
+.cs-color {
+    background-color: aquamarine;
+}

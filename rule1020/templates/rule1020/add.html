@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+<body>
+
+{% block content %}
+
+<main class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-sm-2"> 
+            {% include 'rule1020/leftside.html' %}
+        </div>          
+       
+        <div class="container-sm col-sm-8 card-body">
+            <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0"> LIST OF REGISTERED ESTABLISHMENT</h5>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead class="table-responsive">
+                    
+                </thead>
+                <tbody>
+                {% for y in qs %}
+                    <tr>
+                        <td>{{ y.main_economic_activity }}</td>
+                        <td>{{ y.count}}</td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock content %}
